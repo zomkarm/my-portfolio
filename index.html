@@ -365,6 +365,25 @@
     opacity: 0;
   }
 }
+
+  @media (max-width: 768px) {
+  .left-page {
+    width: 10% !important;
+    overflow: hidden;
+    pointer-events: none; /* So it doesn't block interaction */
+  }
+
+  .right-page {
+    width: 90% !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow: auto;
+  }
+
+  .page {
+    flex-direction: row !important;
+  }
+}
     </style>
   </head>
   <body>
