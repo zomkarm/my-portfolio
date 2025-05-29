@@ -203,8 +203,8 @@
         line-height: 24px;
       }
       .right-page:hover {
-  transform: translateX(-3px);
-}
+        transform: translateX(-3px);
+      }
 
       .left-page::before,
       .left-page::after,
@@ -253,8 +253,9 @@
         flex-grow: 1;
         backface-visibility: hidden;
         overflow-y: auto;
-  padding-right: 15px; /* To avoid content hidden behind scrollbar */
-  box-sizing: border-box;
+        padding-right: 15px; /* To avoid content hidden behind scrollbar */
+        box-sizing: border-box;
+        color: #1e1e1e;
       }
 
       .page-number {
@@ -334,56 +335,75 @@
         display: none;
       }
 
-
       .glow-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 98%;
-  height: 98%;
-  pointer-events: none; /* Don't block clicks */
-  z-index: 0;           /* Ensure it's behind everything */
-}
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 98%;
+        height: 98%;
+        pointer-events: none; /* Don't block clicks */
+        z-index: 0; /* Ensure it's behind everything */
+      }
 
-.glow-bg span {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  animation: glow 6s ease-in-out infinite;
-}
+      .glow-bg span {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        animation: glow 6s ease-in-out infinite;
+      }
 
-@keyframes glow {
-  0% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  100% {
-    transform: scale(1.6);
-    opacity: 0;
-  }
-}
+      @keyframes glow {
+        0% {
+          transform: scale(1);
+          opacity: 0.3;
+        }
+        100% {
+          transform: scale(1.6);
+          opacity: 0;
+        }
+      }
+      @media (max-width: 768px) {
+        .left-page {
+          width: 10% !important;
+          overflow: hidden;
+          pointer-events: none; /* So it doesn't block interaction */
+        }
 
-  @media (max-width: 768px) {
-  .left-page {
-    width: 10% !important;
-    overflow: hidden;
-    pointer-events: none; /* So it doesn't block interaction */
-  }
+        .right-page {
+          width: 90% !important;
+          padding-left: 1rem;
+          padding-right: 1rem;
+          overflow: auto;
+        }
 
-  .right-page {
-    width: 90% !important;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    overflow: auto;
-  }
+        .page {
+          flex-direction: row !important;
+        }
+      }
+      h1 {
+        color: #3e2723; /* Dark Coffee */
+      }
 
-  .page {
-    flex-direction: row !important;
-  }
-}
+      h3 {
+        color: #5d4037; /* Soft Cocoa */
+      }
+      @keyframes coverRotate {
+        0% {
+          transform: rotateY(0deg);
+        }
+        100% {
+          transform: rotateZ(360deg);
+        }
+      }
+
+      .book-cover.rotate-animation {
+        animation: coverRotate 2s ease-in forwards;
+        /* Make sure it stays visible while rotating */
+        pointer-events: none; /* Optional: disable interaction during animation */
+      }
     </style>
   </head>
   <body>
@@ -392,7 +412,7 @@
     <div class="book-cover" id="bookCover">
       <div class="emblem"></div>
       <!-- Optional logo -->
-      <h1>My Dev Portfolio</h1>
+      <h1 style="color: #f8f1e7">My Dev Portfolio</h1>
       <p>A journey through code, ideas & creativity</p>
       <button id="openBookBtn">Start Reading</button>
     </div>
@@ -400,28 +420,22 @@
     <!-- Actual book container hidden initially -->
     <div class="book-container" id="bookContainer">
       <div class="left-page"></div>
-        <div class="right-page" id="rightPage">
-          <div class="content" id="pageContent">
-            <h2>Hello, I'm a Software Developer</h2>
-            <p>
-              Welcome to my book-style portfolio. Flip through the pages to learn
-              more about me, my projects, and how to contact me.
-            </p>
-          </div>
-          <div class="nav-buttons">
-            <button id="prev">Previous</button>
-            <button id="next">Next</button>
-            <button id="goToBtn">Go To &#8593;</button>
+      <div class="right-page" id="rightPage">
+        <div class="content" id="pageContent"></div>
+        <div class="nav-buttons">
+          <button id="prev">Previous</button>
+          <button id="next">Next</button>
+          <button id="goToBtn">Go To &#8593;</button>
 
-            <div id="goToMenu" class="go-to-menu hidden">
-              <button onclick="goToPage(0)">Introduction</button>
-              <button onclick="goToPage(1)">About Me</button>
-              <button onclick="goToPage(2)">Projects</button>
-              <button onclick="goToPage(3)">Contact</button>
-            </div>
+          <div id="goToMenu" class="go-to-menu hidden">
+            <button onclick="goToPage(0)">Introduction</button>
+            <button onclick="goToPage(1)">About Me</button>
+            <button onclick="goToPage(2)">Projects</button>
+            <button onclick="goToPage(3)">Contact</button>
           </div>
-          <div class="page-number" id="pageNumber">Page 1</div>
         </div>
+        <div class="page-number" id="pageNumber">Page 1</div>
+      </div>
     </div>
 
     <script>
@@ -462,7 +476,7 @@
               <li>Adjustable input sizes and speeds for tailored learning</li>
               <li>Clear UI with color-coded comparisons and swaps</li>
             </ul>
-          `
+          `,
         },
         {
           title: "About Me",
@@ -532,8 +546,14 @@
 
       // Show the book container when "Open Book" clicked
       openBookBtn.addEventListener("click", () => {
-        bookCover.style.display = "none";
-        bookContainer.style.display = "flex"; // show the book container with flex as in your styles
+        // Add the rotate animation class
+        bookCover.classList.add("rotate-animation");
+
+        // After 2 seconds (animation duration), hide cover & show book container
+        setTimeout(() => {
+          bookCover.style.display = "none";
+          bookContainer.style.display = "flex"; // show the book container
+        }, 2000);
       });
 
       // Simulate hover effect on touchstart
@@ -568,17 +588,16 @@
         }
       }
 
-
-      document.querySelectorAll('.glow-bg').forEach(container => {
-  for (let i = 0; i < 400; i++) {
-    const dot = document.createElement('span');
-    dot.style.top = `${Math.random() * 100}%`;
-    dot.style.left = `${Math.random() * 100}%`;
-    dot.style.animationDelay = `${Math.random() * 5}s`;
-    dot.style.animationDuration = `${4 + Math.random() * 3}s`;
-    container.appendChild(dot);
-  }
-});
+      document.querySelectorAll(".glow-bg").forEach((container) => {
+        for (let i = 0; i < 400; i++) {
+          const dot = document.createElement("span");
+          dot.style.top = `${Math.random() * 100}%`;
+          dot.style.left = `${Math.random() * 100}%`;
+          dot.style.animationDelay = `${Math.random() * 5}s`;
+          dot.style.animationDuration = `${4 + Math.random() * 3}s`;
+          container.appendChild(dot);
+        }
+      });
     </script>
   </body>
 </html>
