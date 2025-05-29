@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #111;
+        font-family: "Lora", serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        perspective: 1200px;
+        flex-direction: column; /* So cover and book-container stack vertically */
+      }
+
+      /* New: Book cover container shown initially */
+      .book-cover {
+        width: 300px;
+        height: 450px;
+        background: linear-gradient(135deg, #5b3e31, #8e5e3b);
+        border-radius: 10px;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5),
+          inset -5px -5px 10px rgba(255, 255, 255, 0.1),
+          inset 5px 5px 15px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fdf6e3;
+
+        text-align: center;
+        padding: 1rem;
+        background-image: repeating-linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.05),
+          rgba(255, 255, 255, 0.05) 2px,
+          transparent 2px,
+          transparent 4px
+        );
+        transition: transform 0.4s ease;
+      }
+
+      .book-cover:hover {
+        transform: scale(1.03) rotateZ(-1deg);
+      }
+
+      .book-cover h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .book-cover p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+
+      .book-cover button {
+        margin-top: 2rem;
+        padding: 0.6rem 1.4rem;
+        background-color: #2e1c15;
+        border: none;
+        border-radius: 6px;
+        color: #fff7f0;
+        font-size: 1rem;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        transition: box-shadow 0.4s ease, transform 0.2s ease;
+        animation: pulseGlow 2s infinite ease-in-out;
+      }
+
+      .book-cover button:hover {
+        background-color: #41291d;
+        transform: scale(1.05);
+      }
+
+      @keyframes pulseGlow {
+        0% {
+          box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+        }
+        50% {
+          box-shadow: 0 0 14px rgba(255, 255, 255, 0.4);
+        }
+        100% {
+          box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .book-cover {
+          animation: bounceIn 1s ease;
+        }
+
+        @keyframes bounceIn {
+          0% {
+            transform: scale(0.95) rotateZ(0deg);
+            opacity: 0;
+          }
+          50% {
+            transform: scale(1.05) rotateZ(-1deg);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1) rotateZ(0deg);
+          }
+        }
+      }
+
+      .book-cover::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10%;
+        width: 12px;
+        height: 80%;
+        background: #3c2a21;
+        box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.4);
+        border-radius: 3px 0 0 3px;
+      }
+
+      /* Hide book container initially */
+      .book-container {
+        display: none; /* Hide initially */
+        flex: 1 1 auto; /* Make it flexible when shown */
+      }
+
+      /* Your existing styles for .book-container and children below, unchanged */
+      .book-container {
+        display: none;
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        width: 90vw;
+        max-width: 1000px;
+        height: 90vh;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5),
+          inset 5px 0 15px rgba(0, 0, 0, 0.2),
+          inset -5px 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        overflow: hidden;
+        background: #222;
+        transform-style: preserve-3d;
+        display: none; /* keep hidden */
+      }
+
+      .left-page {
+        width: 30%;
+        background: #f8f1e7; /* warm off-white paper tone */
+        background-image: repeating-linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.03) 0px,
+          rgba(0, 0, 0, 0.03) 1px,
+          transparent 1px,
+          transparent 24px
+        );
+        transform: perspective(1000px) rotateY(15deg);
+        box-shadow: inset -5px 0 15px rgba(0, 0, 0, 0.2),
+          4px 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 12px 0 0 12px;
+      }
+
+      .right-page {
+        width: 70%;
+        background: #fffefc; /* subtle cream white */
+        background-image: repeating-linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.04) 0px,
+          rgba(0, 0, 0, 0.04) 1px,
+          transparent 1px,
+          transparent 24px
+        );
+        padding: 2rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 0 12px 12px 0;
+        box-shadow: inset 5px 0 15px rgba(0, 0, 0, 0.1),
+          0 0 20px rgba(0, 0, 0, 0.15);
+        transform-style: preserve-3d;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+          box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: left center;
+        cursor: pointer;
+        user-select: none;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: #f2e4cb;
+        line-height: 24px;
+      }
+      .right-page:hover {
+  transform: translateX(-3px);
+}
+
+      .left-page::before,
+      .left-page::after,
+      .right-page::before,
+      .right-page::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 12px;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .left-page::before,
+      .right-page::before {
+        top: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.08),
+          transparent
+        );
+      }
+
+      .left-page::after,
+      .right-page::after {
+        bottom: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.06), transparent);
+      }
+
+      .right-page.flipping-next {
+        transform: rotateY(-160deg);
+        box-shadow: inset 30px 0 60px rgba(0, 0, 0, 0.7),
+          10px 0 30px rgba(0, 0, 0, 0.8);
+        z-index: 10;
+      }
+
+      .right-page.flipping-prev {
+        transform: rotateY(0deg);
+        box-shadow: inset 5px 0 15px rgba(0, 0, 0, 0.1),
+          0 0 20px rgba(0, 0, 0, 0.2);
+        z-index: 5;
+      }
+
+      .content {
+        flex-grow: 1;
+        backface-visibility: hidden;
+        overflow-y: auto;
+  padding-right: 15px; /* To avoid content hidden behind scrollbar */
+  box-sizing: border-box;
+      }
+
+      .page-number {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #666;
+        padding-top: 1rem;
+        user-select: none;
+      }
+
+      .nav-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        user-select: none;
+      }
+
+      .nav-buttons button {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 8px;
+        background: #333;
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        user-select: none;
+      }
+
+      .nav-buttons button:hover {
+        background: #555;
+      }
+
+      .nav-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+        position: relative; /* so dropdown can be absolute inside */
+      }
+
+      .nav-buttons button:hover {
+        background-color: #e4d9bc;
+      }
+
+      .go-to-menu {
+        position: absolute;
+        bottom: 45px;
+        right: 0;
+        background: #555;
+        color: #fff7f0;
+        border-radius: 20px;
+        box-shadow: 3px 3px 10px #b7a885aa;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 12px;
+        z-index: 10;
+        width: 140px;
+      }
+
+      .go-to-menu button {
+        box-shadow: none;
+        border: none;
+        background: none;
+        padding: 6px 8px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .go-to-menu button:hover {
+        background-color: #e4d9bc;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+
+      .glow-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 98%;
+  height: 98%;
+  pointer-events: none; /* Don't block clicks */
+  z-index: 0;           /* Ensure it's behind everything */
+}
+
+.glow-bg span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: glow 6s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="glow-bg"></div>
+    <!-- Book cover container shown initially -->
+    <div class="book-cover" id="bookCover">
+      <div class="emblem"></div>
+      <!-- Optional logo -->
+      <h1>My Dev Portfolio</h1>
+      <p>A journey through code, ideas & creativity</p>
+      <button id="openBookBtn">Start Reading</button>
+    </div>
+
+    <!-- Actual book container hidden initially -->
+    <div class="book-container" id="bookContainer">
+      <div class="left-page"></div>
+        <div class="right-page" id="rightPage">
+          <div class="content" id="pageContent">
+            <h2>Hello, I'm a Software Developer</h2>
+            <p>
+              Welcome to my book-style portfolio. Flip through the pages to learn
+              more about me, my projects, and how to contact me.
+            </p>
+          </div>
+          <div class="nav-buttons">
+            <button id="prev">Previous</button>
+            <button id="next">Next</button>
+            <button id="goToBtn">Go To &#8593;</button>
+
+            <div id="goToMenu" class="go-to-menu hidden">
+              <button onclick="goToPage(0)">Introduction</button>
+              <button onclick="goToPage(1)">About Me</button>
+              <button onclick="goToPage(2)">Projects</button>
+              <button onclick="goToPage(3)">Contact</button>
+            </div>
+          </div>
+          <div class="page-number" id="pageNumber">Page 1</div>
+        </div>
+    </div>
+
+    <script>
+      const pages = [
+        {
+          title: "Hello, I'm a Software Developer",
+          text: "Welcome to my book-style portfolio. Flip through the pages to learn more about me, my projects, and how to contact me.",
+        },
+        {
+          title: "Projects",
+          text: `
+            <h3>Customer Feedback & Sentiment Analysis Dashboard</h3>
+            <p>
+              A full-stack web application built with React and Node.js that allows companies to collect customer feedback through customizable surveys. It features sentiment analysis and visualization charts that provide insights into customer satisfaction and product improvement opportunities.
+            </p>
+            <ul>
+              <li>Multi-survey management with unique feedback URLs</li>
+              <li>Sentiment classification using NLP techniques</li>
+              <li>Dynamic dashboards with interactive charts powered by Recharts</li>
+            </ul>
+
+            <h3>KindEcho – Anonymous Gratitude Wall</h3>
+            <p>
+              A Laravel 10 and Blade powered anonymous gratitude wall designed to foster positivity by allowing users to share anonymous thank-you posts. Features include mood selection, post tagging, content moderation via AI and keyword filtering, and user dashboards.
+            </p>
+            <ul>
+              <li>Anonymous posting with mood and tags</li>
+              <li>Admin moderation with AI-powered sentiment and safety checks</li>
+              <li>Responsive SPA-like UI with dynamic content loading</li>
+            </ul>
+
+            <h3>Searching & Sorting Visualizer</h3>
+            <p>
+              An interactive educational tool built with React that visualizes various searching and sorting algorithms in action. It helps learners understand algorithm efficiency and behavior with step-by-step animations and real-time complexity metrics.
+            </p>
+            <ul>
+              <li>Visualizes algorithms like Binary Search, Merge Sort, Quick Sort</li>
+              <li>Adjustable input sizes and speeds for tailored learning</li>
+              <li>Clear UI with color-coded comparisons and swaps</li>
+            </ul>
+          `
+        },
+        {
+          title: "About Me",
+          text: "I'm a passionate developer with experience in building modern web applications using technologies like JavaScript, React, Node.js, and more.",
+        },
+        {
+          title: "Contact",
+          text: "Feel free to reach out via email or connect with me on LinkedIn. I'm always open to interesting projects and collaborations.",
+        },
+      ];
+
+      let currentPage = 0;
+
+      const pageContent = document.getElementById("pageContent");
+      const pageNumber = document.getElementById("pageNumber");
+      const rightPage = document.getElementById("rightPage");
+      const bookCover = document.getElementById("bookCover");
+      const bookContainer = document.getElementById("bookContainer");
+      const openBookBtn = document.getElementById("openBookBtn");
+
+      function renderPage(index) {
+        pageContent.innerHTML = `<h1>${pages[index].title}</h1><p>${pages[index].text}</p>`;
+        pageNumber.textContent = `Page ${index + 1}`;
+      }
+
+      function flipPage(direction) {
+        if (direction === "next" && currentPage < pages.length - 1) {
+          rightPage.classList.add("flipping-next");
+
+          setTimeout(() => {
+            currentPage++;
+            renderPage(currentPage);
+
+            rightPage.classList.remove("flipping-next");
+            rightPage.classList.add("flipping-prev");
+
+            setTimeout(() => {
+              rightPage.classList.remove("flipping-prev");
+            }, 600);
+          }, 600);
+        } else if (direction === "prev" && currentPage > 0) {
+          rightPage.classList.add("flipping-next");
+
+          setTimeout(() => {
+            currentPage--;
+            renderPage(currentPage);
+
+            rightPage.classList.remove("flipping-next");
+            rightPage.classList.add("flipping-prev");
+
+            setTimeout(() => {
+              rightPage.classList.remove("flipping-prev");
+            }, 600);
+          }, 600);
+        }
+      }
+
+      document
+        .getElementById("next")
+        .addEventListener("click", () => flipPage("next"));
+      document
+        .getElementById("prev")
+        .addEventListener("click", () => flipPage("prev"));
+
+      // Initialize first page
+      renderPage(currentPage);
+
+      // Show the book container when "Open Book" clicked
+      openBookBtn.addEventListener("click", () => {
+        bookCover.style.display = "none";
+        bookContainer.style.display = "flex"; // show the book container with flex as in your styles
+      });
+
+      // Simulate hover effect on touchstart
+      bookCover.addEventListener("touchstart", () => {
+        bookCover.classList.add("touch-hover");
+      });
+      bookCover.addEventListener("touchend", () => {
+        bookCover.classList.remove("touch-hover");
+      });
+
+      const goToBtn = document.getElementById("goToBtn");
+      const goToMenu = document.getElementById("goToMenu");
+
+      // Toggle dropdown on "Go To" button click
+      goToBtn.addEventListener("click", () => {
+        goToMenu.classList.toggle("hidden");
+      });
+
+      // Close dropdown if clicked outside
+      document.addEventListener("click", (e) => {
+        if (!goToBtn.contains(e.target) && !goToMenu.contains(e.target)) {
+          goToMenu.classList.add("hidden");
+        }
+      });
+
+      // Reuse your existing goToPage function to navigate pages
+      function goToPage(index) {
+        if (index >= 0 && index < pages.length) {
+          currentPage = index;
+          renderPage(currentPage);
+          goToMenu.classList.add("hidden"); // close menu on selection
+        }
+      }
+
+
+      document.querySelectorAll('.glow-bg').forEach(container => {
+  for (let i = 0; i < 400; i++) {
+    const dot = document.createElement('span');
+    dot.style.top = `${Math.random() * 100}%`;
+    dot.style.left = `${Math.random() * 100}%`;
+    dot.style.animationDelay = `${Math.random() * 5}s`;
+    dot.style.animationDuration = `${4 + Math.random() * 3}s`;
+    container.appendChild(dot);
+  }
+});
+    </script>
+  </body>
+</html>
