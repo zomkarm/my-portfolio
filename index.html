@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Clicker+Script&family=Crafty+Girls&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <style>
       body {
         margin: 0;
         padding: 0;
         background: #111;
-        font-family: "Lora", serif;
+        font-family: "Caveat", cursive;
+        font-size: x-large;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -425,68 +421,135 @@
         <div class="nav-buttons">
           <button id="prev">Previous</button>
           <button id="next">Next</button>
-          <button id="goToBtn">Go To &#8593;</button>
+          <button style="display: none;" id="goToBtn">Go To &#8593;</button>
 
-          <div id="goToMenu" class="go-to-menu hidden">
+          <!-- <div id="goToMenu" class="go-to-menu hidden">
             <button onclick="goToPage(0)">Introduction</button>
             <button onclick="goToPage(1)">About Me</button>
             <button onclick="goToPage(2)">Projects</button>
             <button onclick="goToPage(3)">Contact</button>
-          </div>
+          </div> -->
         </div>
         <div class="page-number" id="pageNumber">Page 1</div>
       </div>
     </div>
 
     <script>
-      const pages = [
-        {
-          title: "Hello, I'm a Software Developer",
-          text: "Welcome to my book-style portfolio. Flip through the pages to learn more about me, my projects, and how to contact me.",
-        },
-        {
-          title: "Projects",
-          text: `
-            <h3>Customer Feedback & Sentiment Analysis Dashboard</h3>
-            <p>
-              A full-stack web application built with React and Node.js that allows companies to collect customer feedback through customizable surveys. It features sentiment analysis and visualization charts that provide insights into customer satisfaction and product improvement opportunities.
-            </p>
-            <ul>
-              <li>Multi-survey management with unique feedback URLs</li>
-              <li>Sentiment classification using NLP techniques</li>
-              <li>Dynamic dashboards with interactive charts powered by Recharts</li>
-            </ul>
+const pages = [
+  {
+    title: "Hi, I'm Omkar Zende 👋",
+    text: `
+      <p>
+        Welcome to my book-style portfolio! I'm a full stack developer passionate about building purposeful software that’s both intuitive and impactful.
+      </p>
+      <p>
+        Flip through these pages to explore my featured projects, learn more about my journey, and find ways to connect.
+      </p>
+      <p>
+        I thrive at the intersection of <strong>clean design</strong>, <strong>solid logic</strong>, and <strong>creative problem-solving</strong>.
+      </p>
+    `,
+  },
+  {
+    title: "🚀 Projects – Part 1",
+    text: `
+      <h3>🧠 Customer Feedback & Sentiment Analysis</h3>
+      <p>
+        A full-stack app using <strong>React</strong>, <strong>Node.js</strong>, and <strong>MongoDB</strong> to collect user feedback and analyze sentiment with <strong>OpenAI</strong>. 
+        Results are visualized in clean dashboards powered by <strong>Recharts</strong>.
+      </p>
+      <ul>
+        <li>📩 Multi-form feedback system with shareable survey links</li>
+        <li>💬 AI-generated sentiment tags and response summaries</li>
+        <li>📊 Dynamic dashboards with satisfaction trends</li>
+        <li>🛠️ Deployed on Vercel with modern UI</li>
+      </ul>
+      <p>
+        🔗 <a href="https://customer-feedback-and-sentiment-analysis.vercel.app/" target="_blank">Live Demo</a> | 
+        <a href="https://github.com/zomkarm/customer-feedback-and-sentiment-analysis.git" target="_blank">GitHub</a>
+      </p>
 
-            <h3>KindEcho – Anonymous Gratitude Wall</h3>
-            <p>
-              A Laravel 10 and Blade powered anonymous gratitude wall designed to foster positivity by allowing users to share anonymous thank-you posts. Features include mood selection, post tagging, content moderation via AI and keyword filtering, and user dashboards.
-            </p>
-            <ul>
-              <li>Anonymous posting with mood and tags</li>
-              <li>Admin moderation with AI-powered sentiment and safety checks</li>
-              <li>Responsive SPA-like UI with dynamic content loading</li>
-            </ul>
+      <br />
 
-            <h3>Searching & Sorting Visualizer</h3>
-            <p>
-              An interactive educational tool built with React that visualizes various searching and sorting algorithms in action. It helps learners understand algorithm efficiency and behavior with step-by-step animations and real-time complexity metrics.
-            </p>
-            <ul>
-              <li>Visualizes algorithms like Binary Search, Merge Sort, Quick Sort</li>
-              <li>Adjustable input sizes and speeds for tailored learning</li>
-              <li>Clear UI with color-coded comparisons and swaps</li>
-            </ul>
-          `,
-        },
-        {
-          title: "About Me",
-          text: "I'm a passionate developer with experience in building modern web applications using technologies like JavaScript, React, Node.js, and more.",
-        },
-        {
-          title: "Contact",
-          text: "Feel free to reach out via email or connect with me on LinkedIn. I'm always open to interesting projects and collaborations.",
-        },
-      ];
+      <h3>🌼 KindEcho – Gratitude Wall</h3>
+      <p>
+        A mental wellness app built with <strong>Laravel 10</strong> for anonymous gratitude sharing. It uses <strong>AI-powered sentiment filtering</strong> to keep the space safe and uplifting.
+      </p>
+      <ul>
+        <li>📝 Anonymous messages with mood selection + tags</li>
+        <li>🤖 AI & keyword filtering for real-time moderation</li>
+        <li>📷 Grid-style feed (like Instagram) with lazy loading</li>
+        <li>📈 Admin panel with charts, post management, and user metrics</li>
+      </ul>
+      <p>
+        🔗 <a href="https://web-production-d8fe1.up.railway.app/" target="_blank">Live App</a> | 
+        <a href="https://github.com/zomkarm/kindecho.git" target="_blank">GitHub</a>
+      </p>
+    `,
+  },
+  {
+    title: "🛠️ Projects – Part 2",
+    text: `
+      <h3>🔥 Firelog – Secure Logger</h3>
+      <p>
+        A minimal <strong>Express.js</strong> logging library for real-time event tracking. Logs route hits, user activity, and security events to <strong>MongoDB</strong>.
+      </p>
+      <ul>
+        <li>🔐 Captures IPs, user agents, and timestamps</li>
+        <li>⚙️ Configurable event types and log levels</li>
+        <li>📦 Lightweight, drop-in Node.js middleware</li>
+        <li>🧾 Ideal for debugging or auditing APIs</li>
+      </ul>
+      <p>
+        🔗 <a href="#" target="_blank">Live Demo</a> | 
+        <a href="https://github.com/zomkarm/firelog.git" target="_blank">GitHub</a>
+      </p>
+
+      <br />
+
+      <h3>📚 Sorting & Searching Visualizer</h3>
+      <p>
+        An interactive <strong>React</strong> app to visualize classic algorithms like <strong>Binary Search</strong>, <strong>Merge Sort</strong>, and <strong>Quick Sort</strong>. Great for learning or teaching.
+      </p>
+      <ul>
+        <li>🔄 Step-by-step visual flow of logic</li>
+        <li>🎛️ Adjustable array size and speed controls</li>
+        <li>🎨 Animated with Framer Motion & color-coded logic</li>
+        <li>📱 Fully responsive for desktop and mobile</li>
+      </ul>
+      <p>
+        🔗 <a href="https://searching-sorting-visualizer-zeta.vercel.app/" target="_blank">Try it live</a> | 
+        <a href="https://github.com/zomkarm/searching-sorting-visualizer.git" target="_blank">GitHub</a>
+      </p>
+    `,
+  },
+  {
+    title: "👨‍💻 About Me",
+    text: `
+      <p>
+        I'm a self-taught full stack developer from Pune, India. I enjoy crafting elegant UIs, building robust APIs, and solving meaningful problems with code.
+      </p>
+      <p>
+        My interests span across <strong>web dev</strong>, <strong>AI-assisted tools</strong>, <strong>creative coding</strong>, and open-source collaboration.
+      </p>
+      <p>
+        Outside of code, I’m into ✏️ pencil sketching, 🏋️‍♂️ fitness, and 📖 non-fiction reading.
+      </p>
+    `,
+  },
+  {
+    title: "📬 Contact & Links",
+    text: `
+      <p>📧 <strong>Email:</strong> <a href="mailto:expertomkar@gmail.com">expertomkar@gmail.com</a></p>
+      <p>💻 <strong>GitHub:</strong> <a href="https://github.com/zomkarm" target="_blank">zomkarm</a></p>
+      <p>🔗 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/omkar-zende-045645177" target="_blank">omkar-zende</a></p>
+      <p>📍 <strong>Location:</strong> Pune, Maharashtra, India</p>
+      <p>🎯 <strong>Focus:</strong> Full stack apps, AI tools, open-source, creative tech</p>
+    `,
+  },
+];
+
+
 
       let currentPage = 0;
 
