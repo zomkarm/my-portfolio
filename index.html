@@ -4,16 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Clicker+Script&family=Crafty+Girls&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&family=Caveat:wght@400..700&family=Clicker+Script&family=Crafty+Girls&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body {
         margin: 0;
         padding: 0;
         background: #111;
-        font-family: "Caveat", cursive;
+        font-family: "Baskervville", serif;
         font-size: x-large;
         display: flex;
         justify-content: center;
@@ -197,6 +199,7 @@
         margin-bottom: 20px;
         background-color: #f2e4cb;
         line-height: 24px;
+        font-size: large;
       }
       .right-page:hover {
         transform: translateX(-3px);
@@ -381,6 +384,7 @@
       }
       h1 {
         color: #3e2723; /* Dark Coffee */
+        line-height: 38px;
       }
 
       h3 {
@@ -400,6 +404,15 @@
         /* Make sure it stays visible while rotating */
         pointer-events: none; /* Optional: disable interaction during animation */
       }
+
+      #openBookBtn {
+        font-size: 14px;
+        font-weight: bolder;
+        width: auto;
+      }
+      button {
+        font-family: "monospace", sans-serif;
+      }
     </style>
   </head>
   <body>
@@ -408,8 +421,13 @@
     <div class="book-cover" id="bookCover">
       <div class="emblem"></div>
       <!-- Optional logo -->
-      <h1 style="color: #f8f1e7">My Dev Portfolio</h1>
-      <p>A journey through code, ideas & creativity</p>
+      <h1 style="color: #f8f1e7; font-size: 20px; padding: 10px">
+        My Dev Portfolio
+      </h1>
+      <p style="font-size: 16px; font-weight: bolder; letter-spacing: 5px">
+        A journey through code,<br />
+        ideas & creativity
+      </p>
       <button id="openBookBtn">Start Reading</button>
     </div>
 
@@ -421,7 +439,7 @@
         <div class="nav-buttons">
           <button id="prev">Previous</button>
           <button id="next">Next</button>
-          <button style="display: none;" id="goToBtn">Go To &#8593;</button>
+          <button style="display: none" id="goToBtn">Go To &#8593;</button>
 
           <!-- <div id="goToMenu" class="go-to-menu hidden">
             <button onclick="goToPage(0)">Introduction</button>
@@ -435,10 +453,10 @@
     </div>
 
     <script>
-const pages = [
-  {
-    title: "Hi, I'm Omkar Zende 👋",
-    text: `
+      const pages = [
+        {
+          title: "Hi, I'm Omkar Zende 👋",
+          text: `
       <p>
         Welcome to my book-style portfolio! I'm a full stack developer passionate about building purposeful software that’s both intuitive and impactful.
       </p>
@@ -449,10 +467,10 @@ const pages = [
         I thrive at the intersection of <strong>clean design</strong>, <strong>solid logic</strong>, and <strong>creative problem-solving</strong>.
       </p>
     `,
-  },
-  {
-    title: "🚀 Projects – Part 1",
-    text: `
+        },
+        {
+          title: "🚀 Projects – Part 1",
+          text: `
       <h3>🧠 Customer Feedback & Sentiment Analysis</h3>
       <p>
         A full-stack app using <strong>React</strong>, <strong>Node.js</strong>, and <strong>MongoDB</strong> to collect user feedback and analyze sentiment with <strong>OpenAI</strong>. 
@@ -460,7 +478,7 @@ const pages = [
       </p>
       <ul>
         <li>📩 Multi-form feedback system with shareable survey links</li>
-        <li>💬 AI-generated sentiment tags and response summaries</li>
+        <li>💬 AI-generated sentiment analysis on the feedback surveys</li>
         <li>📊 Dynamic dashboards with satisfaction trends</li>
         <li>🛠️ Deployed on Vercel with modern UI</li>
       </ul>
@@ -478,7 +496,7 @@ const pages = [
       <ul>
         <li>📝 Anonymous messages with mood selection + tags</li>
         <li>🤖 AI & keyword filtering for real-time moderation</li>
-        <li>📷 Grid-style feed (like Instagram) with lazy loading</li>
+        <li>📷 Grid-style feed with lazy loading</li>
         <li>📈 Admin panel with charts, post management, and user metrics</li>
       </ul>
       <p>
@@ -486,10 +504,10 @@ const pages = [
         <a href="https://github.com/zomkarm/kindecho.git" target="_blank">GitHub</a>
       </p>
     `,
-  },
-  {
-    title: "🛠️ Projects – Part 2",
-    text: `
+        },
+        {
+          title: "🛠️ Projects – Part 2",
+          text: `
       <h3>🔥 Firelog – Secure Logger</h3>
       <p>
         A minimal <strong>Express.js</strong> logging library for real-time event tracking. Logs route hits, user activity, and security events to <strong>MongoDB</strong>.
@@ -522,10 +540,10 @@ const pages = [
         <a href="https://github.com/zomkarm/searching-sorting-visualizer.git" target="_blank">GitHub</a>
       </p>
     `,
-  },
-  {
-    title: "👨‍💻 About Me",
-    text: `
+        },
+        {
+          title: "👨‍💻 About Me",
+          text: `
       <p>
         I'm a self-taught full stack developer from Pune, India. I enjoy crafting elegant UIs, building robust APIs, and solving meaningful problems with code.
       </p>
@@ -536,20 +554,18 @@ const pages = [
         Outside of code, I’m into ✏️ pencil sketching, 🏋️‍♂️ fitness, and 📖 non-fiction reading.
       </p>
     `,
-  },
-  {
-    title: "📬 Contact & Links",
-    text: `
+        },
+        {
+          title: "📬 Contact & Links",
+          text: `
       <p>📧 <strong>Email:</strong> <a href="mailto:expertomkar@gmail.com">expertomkar@gmail.com</a></p>
       <p>💻 <strong>GitHub:</strong> <a href="https://github.com/zomkarm" target="_blank">zomkarm</a></p>
       <p>🔗 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/omkar-zende-045645177" target="_blank">omkar-zende</a></p>
       <p>📍 <strong>Location:</strong> Pune, Maharashtra, India</p>
       <p>🎯 <strong>Focus:</strong> Full stack apps, AI tools, open-source, creative tech</p>
     `,
-  },
-];
-
-
+        },
+      ];
 
       let currentPage = 0;
 
