@@ -414,6 +414,7 @@
         font-family: "monospace", sans-serif;
       }
     </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
     <div class="glow-bg"></div>
@@ -453,119 +454,139 @@
     </div>
 
     <script>
-      const pages = [
-        {
-          title: "Hi, I'm Omkar Zende 👋",
-          text: `
-      <p>
-        Welcome to my book-style portfolio! I'm a full stack developer passionate about building purposeful software that’s both intuitive and impactful.
-      </p>
-      <p>
-        Flip through these pages to explore my featured projects, learn more about my journey, and find ways to connect.
-      </p>
-      <p>
-        I thrive at the intersection of <strong>clean design</strong>, <strong>solid logic</strong>, and <strong>creative problem-solving</strong>.
-      </p>
-    `,
-        },
-        {
-          title: "🚀 Projects – Part 1",
-          text: `
-      <h3>🧠 Customer Feedback & Sentiment Analysis</h3>
-      <p>
-        A full-stack app using <strong>React</strong>, <strong>Node.js</strong>, and <strong>MongoDB</strong> to collect user feedback and analyze sentiment with <strong>OpenAI</strong>. 
-        Results are visualized in clean dashboards powered by <strong>Recharts</strong>.
-      </p>
-      <ul>
-        <li>📩 Multi-form feedback system with shareable survey links</li>
-        <li>💬 AI-generated sentiment analysis on the feedback surveys</li>
-        <li>📊 Dynamic dashboards with satisfaction trends</li>
-        <li>🛠️ Deployed on Vercel with modern UI</li>
-      </ul>
-      <p>
-        🔗 <a href="https://customer-feedback-and-sentiment-analysis.vercel.app/" target="_blank">Live Demo</a> | 
-        <a href="https://github.com/zomkarm/customer-feedback-and-sentiment-analysis.git" target="_blank">GitHub</a>
-      </p>
+    const pages = [
+      {
+        title: `<i data-lucide="book-open"></i> Hi, I'm Omkar Zende`,
+        text: `
+          <p>
+            Welcome to my book-style portfolio! I'm a full stack developer passionate about building purposeful software that’s both intuitive and impactful.
+          </p>
+          <p>
+            Flip through these pages to explore my featured projects, learn more about my journey, and find ways to connect.
+          </p>
+          <p>
+            I thrive at the intersection of <strong>clean design</strong>, <strong>solid logic</strong>, and <strong>creative problem-solving</strong>.
+          </p>
+        `,
+      },
+      {
+        title: `<i data-lucide="rocket"></i> Projects – Part 1`,
+        text: `
+          <h3><i data-lucide="layout"></i> Drofont – Clarity‑First Frontend Platform</h3>
+          <p>
+            A clarity‑first ecosystem to <strong>learn and build modern web pages</strong> visually and clearly. 
+            Drofont combines <strong>PageTutor</strong>, <strong>Learners Space</strong>, and <strong>Semantic Builder</strong> 
+            to make HTML, CSS, and Tailwind approachable through interactive, visual learning.
+          </p>
+          <ul>
+            <li><i data-lucide="play-circle"></i> <strong>PageTutor:</strong> media‑style player for code & UI — pause, rewind, replay lessons</li>
+            <li><i data-lucide="book-open"></i> <strong>Learners Space:</strong> interactive glossary, playground, and clarity‑first exercises</li>
+            <li><i data-lucide="columns"></i> <strong>Semantic Builder:</strong> drag & drop semantic blocks, export clean HTML + Tailwind</li>
+            <li><i data-lucide="check-circle"></i> Professional polish without hacks, ideal for learners and creators</li>
+          </ul>
+          <p>
+            <i data-lucide="link"></i> 
+            <a href="https://drofont.vercel.app/" target="_blank">Live Demo</a> 
+          </p>
 
-      <br />
+          <br />
 
-      <h3>🌼 KindEcho – Gratitude Wall</h3>
-      <p>
-        A mental wellness app built with <strong>Laravel 10</strong> for anonymous gratitude sharing. It uses <strong>AI-powered sentiment filtering</strong> to keep the space safe and uplifting.
-      </p>
-      <ul>
-        <li>📝 Anonymous messages with mood selection + tags</li>
-        <li>🤖 AI & keyword filtering for real-time moderation</li>
-        <li>📷 Grid-style feed with lazy loading</li>
-        <li>📈 Admin panel with charts, post management, and user metrics</li>
-      </ul>
-      <p>
-        🔗 <a href="https://web-production-d8fe1.up.railway.app/" target="_blank">Live App</a> | 
-        <a href="https://github.com/zomkarm/kindecho.git" target="_blank">GitHub</a>
-      </p>
-    `,
-        },
-        {
-          title: "🛠️ Projects – Part 2",
-          text: `
-      <h3>🔥 Firelog – Secure Logger</h3>
-      <p>
-        A minimal <strong>Express.js</strong> logging library for real-time event tracking. Logs route hits, user activity, and security events to <strong>MongoDB</strong>.
-      </p>
-      <ul>
-        <li>🔐 Captures IPs, user agents, and timestamps</li>
-        <li>⚙️ Configurable event types and log levels</li>
-        <li>📦 Lightweight, drop-in Node.js middleware</li>
-        <li>🧾 Ideal for debugging or auditing APIs</li>
-      </ul>
-      <p>
-        🔗 <a href="#" target="_blank">Live Demo</a> | 
-        <a href="https://github.com/zomkarm/firelog.git" target="_blank">GitHub</a>
-      </p>
+          <h3><i data-lucide="brain"></i> Customer Feedback & Sentiment Analysis</h3>
+          <p>
+            A full-stack app using <strong>React</strong>, <strong>Node.js</strong>, and <strong>MongoDB</strong> to collect user feedback and analyze sentiment with <strong>OpenAI</strong>. 
+            Results are visualized in clean dashboards powered by <strong>Recharts</strong>.
+          </p>
+          <ul>
+            <li><i data-lucide="form-input"></i> Multi-form feedback system with shareable survey links</li>
+            <li><i data-lucide="message-square"></i> AI-generated sentiment analysis on the feedback surveys</li>
+            <li><i data-lucide="bar-chart-2"></i> Dynamic dashboards with satisfaction trends</li>
+            <li><i data-lucide="wrench"></i> Deployed on Vercel with modern UI</li>
+          </ul>
+          <p>
+            <i data-lucide="link"></i> <a href="https://customer-feedback-and-sentiment-analysis.vercel.app/" target="_blank">Live Demo</a> | 
+            <a href="https://github.com/zomkarm/customer-feedback-and-sentiment-analysis.git" target="_blank">GitHub</a>
+          </p>
 
-      <br />
+          <br />
 
-      <h3>📚 Sorting & Searching Visualizer</h3>
-      <p>
-        An interactive <strong>React</strong> app to visualize classic algorithms like <strong>Binary Search</strong>, <strong>Merge Sort</strong>, and <strong>Quick Sort</strong>. Great for learning or teaching.
-      </p>
-      <ul>
-        <li>🔄 Step-by-step visual flow of logic</li>
-        <li>🎛️ Adjustable array size and speed controls</li>
-        <li>🎨 Animated with Framer Motion & color-coded logic</li>
-        <li>📱 Fully responsive for desktop and mobile</li>
-      </ul>
-      <p>
-        🔗 <a href="https://searching-sorting-visualizer-zeta.vercel.app/" target="_blank">Try it live</a> | 
-        <a href="https://github.com/zomkarm/searching-sorting-visualizer.git" target="_blank">GitHub</a>
-      </p>
-    `,
-        },
-        {
-          title: "👨‍💻 About Me",
-          text: `
-      <p>
-        I'm a self-taught full stack developer from Pune, India. I enjoy crafting elegant UIs, building robust APIs, and solving meaningful problems with code.
-      </p>
-      <p>
-        My interests span across <strong>web dev</strong>, <strong>AI-assisted tools</strong>, <strong>creative coding</strong>, and open-source collaboration.
-      </p>
-      <p>
-        Outside of code, I’m into ✏️ pencil sketching, 🏋️‍♂️ fitness, and 📖 non-fiction reading.
-      </p>
-    `,
-        },
-        {
-          title: "📬 Contact & Links",
-          text: `
-      <p>📧 <strong>Email:</strong> <a href="mailto:expertomkar@gmail.com">expertomkar@gmail.com</a></p>
-      <p>💻 <strong>GitHub:</strong> <a href="https://github.com/zomkarm" target="_blank">zomkarm</a></p>
-      <p>🔗 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/omkar-zende-045645177" target="_blank">omkar-zende</a></p>
-      <p>📍 <strong>Location:</strong> Pune, Maharashtra, India</p>
-      <p>🎯 <strong>Focus:</strong> Full stack apps, AI tools, open-source, creative tech</p>
-    `,
-        },
-      ];
+          <h3><i data-lucide="heart"></i> KindEcho – Gratitude Wall</h3>
+          <p>
+            A mental wellness app built with <strong>Laravel 10</strong> for anonymous gratitude sharing. It uses <strong>AI-powered sentiment filtering</strong> to keep the space safe and uplifting.
+          </p>
+          <ul>
+            <li><i data-lucide="file-text"></i> Anonymous messages with mood selection + tags</li>
+            <li><i data-lucide="shield"></i> AI & keyword filtering for real-time moderation</li>
+            <li><i data-lucide="image"></i> Grid-style feed with lazy loading</li>
+            <li><i data-lucide="bar-chart"></i> Admin panel with charts, post management, and user metrics</li>
+          </ul>
+          <p>
+            <i data-lucide="link"></i> <a href="https://web-production-d8fe1.up.railway.app/" target="_blank">Live Demo</a> | 
+            <a href="https://github.com/zomkarm/kindecho.git" target="_blank">GitHub</a>
+          </p>
+        `,
+      },
+      {
+        title: `<i data-lucide="wrench"></i> Projects – Part 2`,
+        text: `
+          <h3><i data-lucide="flame"></i> Firelog – Secure Logger</h3>
+          <p>
+            A minimal <strong>Express.js</strong> logging library for real-time event tracking. Logs route hits, user activity, and security events to <strong>MongoDB</strong>.
+          </p>
+          <ul>
+            <li><i data-lucide="lock"></i> Captures IPs, user agents, and timestamps</li>
+            <li><i data-lucide="settings"></i> Configurable event types and log levels</li>
+            <li><i data-lucide="package"></i> Lightweight, drop-in Node.js middleware</li>
+            <li><i data-lucide="file-text"></i> Ideal for debugging or auditing APIs</li>
+          </ul>
+          <p>
+            <i data-lucide="link"></i> <a href="#" target="_blank">Live Demo</a> | 
+            <a href="https://github.com/zomkarm/firelog.git" target="_blank">GitHub</a>
+          </p>
+
+          <br />
+
+          <h3><i data-lucide="list-ordered"></i> Sorting & Searching Visualizer</h3>
+          <p>
+            An interactive <strong>React</strong> app to visualize classic algorithms like <strong>Binary Search</strong>, <strong>Merge Sort</strong>, and <strong>Quick Sort</strong>. Great for learning or teaching.
+          </p>
+          <ul>
+            <li><i data-lucide="refresh-cw"></i> Step-by-step visual flow of logic</li>
+            <li><i data-lucide="sliders"></i> Adjustable array size and speed controls</li>
+            <li><i data-lucide="palette"></i> Animated with Framer Motion & color-coded logic</li>
+            <li><i data-lucide="smartphone"></i> Fully responsive for desktop and mobile</li>
+          </ul>
+          <p>
+            <i data-lucide="link"></i> <a href="https://searching-sorting-visualizer-zeta.vercel.app/" target="_blank">Live Demo</a> | 
+            <a href="https://github.com/zomkarm/searching-sorting-visualizer.git" target="_blank">GitHub</a>
+          </p>
+        `,
+      },
+      {
+        title: `<i data-lucide="user"></i> About Me`,
+        text: `
+          <p>
+            I'm a self-taught full stack developer from Pune, India. I enjoy crafting elegant UIs, building robust APIs, and solving meaningful problems with code.
+          </p>
+          <p>
+            My interests span across <strong>web dev</strong>, <strong>AI-assisted tools</strong>, <strong>creative coding</strong>, and open-source collaboration.
+          </p>
+          <p>
+            Outside of code, I’m into <i data-lucide="pen-tool"></i> pencil sketching, <i data-lucide="dumbbell"></i> fitness, and <i data-lucide="book"></i> non-fiction reading.
+          </p>
+        `,
+      },
+      {
+        title: `<i data-lucide="mail"></i> Contact & Links`,
+        text: `
+          <p><i data-lucide="mail"></i> <strong>Email:</strong> <a href="mailto:expertomkar@gmail.com">expertomkar@gmail.com</a></p>
+          <p><i data-lucide="github"></i> <strong>GitHub:</strong> <a href="https://github.com/zomkarm" target="_blank">zomkarm</a></p>
+          <p><i data-lucide="linkedin"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/omkar-zende-045645177" target="_blank">omkar-zende</a></p>
+          <p><i data-lucide="map-pin"></i> <strong>Location:</strong> Pune, Maharashtra, India</p>
+          <p><i data-lucide="target"></i> <strong>Focus:</strong> Full stack apps, AI tools, open-source, creative tech</p>
+        `,
+      },
+    ];
+
 
       let currentPage = 0;
 
@@ -579,6 +600,8 @@
       function renderPage(index) {
         pageContent.innerHTML = `<h1>${pages[index].title}</h1><p>${pages[index].text}</p>`;
         pageNumber.textContent = `Page ${index + 1}`;
+
+        lucide.createIcons();
       }
 
       function flipPage(direction) {
