@@ -258,9 +258,11 @@
       }
 
       .page-number {
-        text-align: center;
-        font-size: 0.9rem;
-        color: #666;
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: underline;
+        color: black;
         padding-top: 1rem;
         user-select: none;
       }
@@ -413,6 +415,29 @@
       button {
         font-family: "monospace", sans-serif;
       }
+      .cta-icons {
+        position: fixed;
+        bottom: 10px;
+        right: 20px;
+        display: flex;
+        gap: 14px;
+        background: rgba(30, 30, 30, 0.85);
+        padding: 6px 6px;
+        border-radius: 30px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        z-index: 1000;
+      }
+
+      .cta-icons a {
+        color: #f2e4cb;
+        transition: transform 0.2s ease, color 0.2s ease;
+      }
+
+      .cta-icons a:hover {
+        transform: scale(1.15);
+        color: #ffffff;
+      }
+
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
@@ -429,7 +454,7 @@
         A journey through code,<br />
         ideas & creativity
       </p>
-      <button id="openBookBtn">Start Reading</button>
+      <button aria-label="Start reading" id="openBookBtn">Start Reading</button>
     </div>
 
     <!-- Actual book container hidden initially -->
@@ -438,20 +463,31 @@
       <div class="right-page" id="rightPage">
         <div class="content" id="pageContent"></div>
         <div class="nav-buttons">
-          <button id="prev">Previous</button>
-          <button id="next">Next</button>
-          <button style="display: none" id="goToBtn">Go To &#8593;</button>
+          <button aria-label="Previous" id="prev">Previous</button>
+          <button aria-label="Next" id="next">Next</button>
+          
+          <button id="goToBtn" aria-label="Jump to page">Jump To</button>
 
-          <!-- <div id="goToMenu" class="go-to-menu hidden">
-            <button onclick="goToPage(0)">Introduction</button>
-            <button onclick="goToPage(1)">About Me</button>
-            <button onclick="goToPage(2)">Projects</button>
-            <button onclick="goToPage(3)">Contact</button>
-          </div> -->
+          <div id="goToMenu" class="go-to-menu hidden">
+            <!-- dynamically filled -->
+          </div>
+
         </div>
         <div class="page-number" id="pageNumber">Page 1</div>
+        <div class="cta-icons">
+            <a title="Github" href="https://github.com/zomkarm" target="_blank" aria-label="GitHub">
+              <i data-lucide="github" size="12"></i>
+            </a>
+            <a title="LinkedIn" href="https://www.linkedin.com/in/omkar-zende-045645177" target="_blank" aria-label="LinkedIn">
+              <i data-lucide="linkedin" size="12"></i>
+            </a>
+            <a title="Email" href="mailto:expertomkar@gmail.com" aria-label="Email">
+              <i data-lucide="mail" size="12"></i>
+            </a>
+        </div>
       </div>
     </div>
+
 
     <script>
     const pages = [
@@ -491,6 +527,26 @@
 
           <br />
 
+          <h3><i data-lucide="mic"></i> TalkRehearsel – Conversation Practice Platform</h3>
+          <p>
+            A conversation-practice web app focused on <strong>spoken fluency and confidence</strong>, not grammar correction.
+            TalkRehearsel lets users rehearse real-world scenarios like <strong>interviews</strong>, 
+            <strong>professional conversations</strong>, and <strong>casual talks</strong> through guided role-based practice.
+          </p>
+          <ul>
+            <li><i data-lucide="users"></i> Situation-based conversation scenarios with selectable roles</li>
+            <li><i data-lucide="volume-2"></i> Reference voice lines with accent familiarity</li>
+            <li><i data-lucide="mic"></i> In-browser voice recording for response practice</li>
+            <li><i data-lucide="bar-chart-2"></i> Practice tracking dashboard to monitor progress</li>
+            <li><i data-lucide="layers"></i> SPA-like layout built with Next.js App Router</li>
+          </ul>
+          <p>
+            <i data-lucide="link"></i>
+            <a href="https://talk-rehearsel.vercel.app/" target="_blank">Live Demo</a>
+          </p>
+
+          <br />
+
           <h3><i data-lucide="brain"></i> Customer Feedback & Sentiment Analysis</h3>
           <p>
             A full-stack app using <strong>React</strong>, <strong>Node.js</strong>, and <strong>MongoDB</strong> to collect user feedback and analyze sentiment with <strong>OpenAI</strong>. 
@@ -507,22 +563,6 @@
             <a href="https://github.com/zomkarm/customer-feedback-and-sentiment-analysis.git" target="_blank">GitHub</a>
           </p>
 
-          <br />
-
-          <h3><i data-lucide="heart"></i> KindEcho – Gratitude Wall</h3>
-          <p>
-            A mental wellness app built with <strong>Laravel 10</strong> for anonymous gratitude sharing. It uses <strong>AI-powered sentiment filtering</strong> to keep the space safe and uplifting.
-          </p>
-          <ul>
-            <li><i data-lucide="file-text"></i> Anonymous messages with mood selection + tags</li>
-            <li><i data-lucide="shield"></i> AI & keyword filtering for real-time moderation</li>
-            <li><i data-lucide="image"></i> Grid-style feed with lazy loading</li>
-            <li><i data-lucide="bar-chart"></i> Admin panel with charts, post management, and user metrics</li>
-          </ul>
-          <p>
-            <i data-lucide="link"></i> <a href="https://web-production-d8fe1.up.railway.app/" target="_blank">Live Demo</a> | 
-            <a href="https://github.com/zomkarm/kindecho.git" target="_blank">GitHub</a>
-          </p>
         `,
       },
       {
@@ -541,6 +581,23 @@
           <p>
             <i data-lucide="link"></i> <a href="#" target="_blank">Live Demo</a> | 
             <a href="https://github.com/zomkarm/firelog.git" target="_blank">GitHub</a>
+          </p>
+
+          <br />
+
+          <h3><i data-lucide="heart"></i> KindEcho – Gratitude Wall</h3>
+          <p>
+            A mental wellness app built with <strong>Laravel 10</strong> for anonymous gratitude sharing. It uses <strong>AI-powered sentiment filtering</strong> to keep the space safe and uplifting.
+          </p>
+          <ul>
+            <li><i data-lucide="file-text"></i> Anonymous messages with mood selection + tags</li>
+            <li><i data-lucide="shield"></i> AI & keyword filtering for real-time moderation</li>
+            <li><i data-lucide="image"></i> Grid-style feed with lazy loading</li>
+            <li><i data-lucide="bar-chart"></i> Admin panel with charts, post management, and user metrics</li>
+          </ul>
+          <p>
+            <i data-lucide="link"></i> <a href="https://web-production-d8fe1.up.railway.app/" target="_blank">Live Demo</a> | 
+            <a href="https://github.com/zomkarm/kindecho.git" target="_blank">GitHub</a>
           </p>
 
           <br />
@@ -598,9 +655,8 @@
       const openBookBtn = document.getElementById("openBookBtn");
 
       function renderPage(index) {
-        pageContent.innerHTML = `<h1>${pages[index].title}</h1><p>${pages[index].text}</p>`;
-        pageNumber.textContent = `Page ${index + 1}`;
-
+        pageContent.innerHTML = `<h1>${pages[index].title}</h1>${pages[index].text}`;
+        pageNumber.textContent = `Page ${index + 1} of ${pages.length}`;
         lucide.createIcons();
       }
 
@@ -669,26 +725,37 @@
       const goToBtn = document.getElementById("goToBtn");
       const goToMenu = document.getElementById("goToMenu");
 
-      // Toggle dropdown on "Go To" button click
-      goToBtn.addEventListener("click", () => {
+      // Build menu once
+      pages.forEach((page, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = page.title.replace(/<[^>]*>/g, "");
+        btn.addEventListener("click", () => jumpToPage(index));
+        goToMenu.appendChild(btn);
+      });
+
+      function jumpToPage(index) {
+        if (index === currentPage) return;
+        if (index < 0 || index >= pages.length) return;
+
+        // Kill any animation state
+        rightPage.classList.remove("flipping-next", "flipping-prev");
+
+        currentPage = index;
+        renderPage(currentPage);
+
+        goToMenu.classList.add("hidden");
+      }
+
+      goToBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
         goToMenu.classList.toggle("hidden");
       });
 
-      // Close dropdown if clicked outside
-      document.addEventListener("click", (e) => {
-        if (!goToBtn.contains(e.target) && !goToMenu.contains(e.target)) {
-          goToMenu.classList.add("hidden");
-        }
+      document.addEventListener("click", () => {
+        goToMenu.classList.add("hidden");
       });
 
-      // Reuse your existing goToPage function to navigate pages
-      function goToPage(index) {
-        if (index >= 0 && index < pages.length) {
-          currentPage = index;
-          renderPage(currentPage);
-          goToMenu.classList.add("hidden"); // close menu on selection
-        }
-      }
+
 
       document.querySelectorAll(".glow-bg").forEach((container) => {
         for (let i = 0; i < 400; i++) {
