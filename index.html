@@ -287,6 +287,8 @@
 
       .nav-buttons button:hover {
         background: #555;
+        color: #333;
+        border: 1px solid #333;
       }
 
       .nav-buttons {
@@ -431,11 +433,18 @@
       .cta-icons a {
         color: #f2e4cb;
         transition: transform 0.2s ease, color 0.2s ease;
+        font-size: 0.7rem;
+        font-weight: bold;
+        letter-spacing: 0.1em;
       }
 
       .cta-icons a:hover {
         transform: scale(1.15);
         color: #ffffff;
+      }
+      * {
+        scrollbar-width: thin;          /* Options: auto | thin | none */
+        scrollbar-color: #5d4037 #fffefc; /* Format: thumb_color track_color */
       }
 
     </style>
@@ -475,15 +484,15 @@
         </div>
         <div class="page-number" id="pageNumber">Page 1</div>
         <div class="cta-icons">
-            <a title="Github" href="https://github.com/zomkarm" target="_blank" aria-label="GitHub">
-              <i data-lucide="github" size="12"></i>
-            </a>
-            <a title="LinkedIn" href="https://www.linkedin.com/in/omkar-zende-045645177" target="_blank" aria-label="LinkedIn">
-              <i data-lucide="linkedin" size="12"></i>
-            </a>
-            <a title="Email" href="mailto:expertomkar@gmail.com" aria-label="Email">
-              <i data-lucide="mail" size="12"></i>
-            </a>
+          <a title="GitHub" href="https://github.com/zomkarm" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            GitHub
+          </a>
+          <a title="LinkedIn" href="https://www.linkedin.com/in/omkar-zende-045645177" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            LinkedIn
+          </a>
+          <a title="Email" href="mailto:expertomkar@gmail.com" aria-label="Email">
+            Email
+          </a>
         </div>
       </div>
     </div>
@@ -675,11 +684,11 @@
       {
         title: `<i data-lucide="mail"></i> Contact & Links`,
         text: `
-          <p><i data-lucide="mail"></i> <strong>Email:</strong> <a href="mailto:expertomkar@gmail.com">expertomkar@gmail.com</a></p>
-          <p><i data-lucide="github"></i> <strong>GitHub:</strong> <a href="https://github.com/zomkarm" target="_blank">zomkarm</a></p>
-          <p><i data-lucide="linkedin"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/omkar-zende-045645177" target="_blank">omkar-zende</a></p>
-          <p><i data-lucide="map-pin"></i> <strong>Location:</strong> Pune, Maharashtra, India</p>
-          <p><i data-lucide="target"></i> <strong>Focus:</strong> Full stack apps, AI tools, open-source, creative tech</p>
+          <p><strong>Email:</strong> <a href="mailto:expertomkar@gmail.com">expertomkar@gmail.com</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/zomkarm" target="_blank">zomkarm</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/omkar-zende-045645177" target="_blank">omkar-zende</a></p>
+          <p><strong>Location:</strong> Pune, Maharashtra, India</p>
+          <p><strong>Focus:</strong> Full stack apps, AI tools, open-source, creative tech</p>
         `,
       },
     ];
